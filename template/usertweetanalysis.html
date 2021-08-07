@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin | {{session}}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" 	   type="image/png"href="{{ url_for('static',filename='images/icons/favicon.ico') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/paginate.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/ligne.css') }}">
+</head>
+<body>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+ #d {
+  text-decoration-line: overline underline;
+  text-decoration-style: wavy;
+}
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+
+
+
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;}
+</style>
+
+	<div class="contact1">
+		<div class="container-contact1">
+		<div id="d"><a href="{{ url_for('admin') }}" class="btn"><h5 style="background-color:powderblue;">HOME</h5></a></div>
+			<h2 class="contact1-form-title">Tweet's Classification</h2>
+            <div class="panel">
+                <div class="body">
+                    <div class="input-group">
+
+                    </div>
+                </div>
+            </div>
+<div style="height:500px;overflow:auto;">
+            <table class="myTable table hover">
+			<table id="myTable">
+  <tr class="header">
+
+    <th style="width:10%;">Tweet ID</th>
+    <th style="width:10%;">USER ID</th>
+	 <th style="width:70%;">TWEET</th>
+	  <th style="width:10%;">TYPE</th>
+	   <th style="width:10%;">RELIGIOUS</th>
+	    <th style="width:10%;">ABUSIVE</th>
+		 <th style="width:10%;">COMPARATIVE</th>
+		 <th style="width:10%;">PASSING JUDGEMENT</th>
+  </tr>
+                <tbody>
+				<!-- <tr>
+					<th>No</th>
+					<th></th>
+					<th></th>
+				</tr> -->
+				{% for value in data%}
+                <tr>
+
+                    <td>{{value[0]}}</td>
+					<td>{{value[1]}}</td>
+					<td>{{value[2]}}</td>
+					<td>{{value[3]}}</td>
+					<td>{{value[4]}}</td>
+					<td>{{value[5]}}</td>
+					<td>{{value[6]}}</td>
+					<td>{{value[7]}}</td>
+                </tr>
+				{% endfor %}
+                </tbody>
+
+            </table>
+
+			</div>
+
+            <br><br>
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+			<center><a href="{{ url_for('logout') }}" class="btn">Logout</a></center>
+		</div>
+	</div>
+
+    <script>
+        let options = {
+            numberPerPage:5,
+            goBar:true,
+            pageCounter:true,
+        };
+
+        let filterOptions = {
+            el:'#searchBox' //Caja de texto para filtrar, puede ser una clase o un ID
+        };
+
+        paginate.init('.myTable',options,filterOptions);
+    </script>
+    <script src="{{ url_for('static',filename='js/paginate.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/popper.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/select2/select2.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/tilt/tilt.jquery.min.js') }}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+</body>
+</html>
