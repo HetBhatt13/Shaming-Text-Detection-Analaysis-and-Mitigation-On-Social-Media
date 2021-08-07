@@ -1,1 +1,1 @@
-# Shaming-Text-Detection-Analaysis-and-Mitigation-On-Twitter
+# Shaming-Text-Detection-Analaysis-and-Mitigation-On-Social-Media
